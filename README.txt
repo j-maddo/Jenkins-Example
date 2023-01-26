@@ -25,9 +25,17 @@ Click the Create a job link
 
 Name your pipeline, click Pipeline from the list of options, then click the Ok button.
 
-Define your build triggers. This repo will use Poll SCM to leverage the source code manager, GitHub to run jobs.
-Paste your pipeline script from your IDE. 
+Configure pipeline
+Define your build triggers.
+This repo will use Poll SCM to leverage the source code manager, GitHub to run jobs. To do this go to the General >> Pipeline >> Definition. Click the Definition dropdown to select Pipeline Script from SCM (source code manager).
+
 
 ** Note: This repo will be using Declarative Jenkins syntax to build declarative pipelines. If unfamiliar with Declarative pipelines, check out https://www.jenkins.io/doc/book/pipeline/syntax/ for more information.
 
+
+
 Add a Dockerfile
+This repo will use the docker image from:
+https://github.com/cypress-io/cypress-docker-images/tree/master/browsers/node18.6.0-chrome105-ff104
+
+
