@@ -6,6 +6,9 @@ pipeline {
     //     }
     // }
     agent any
+
+    tools {nodejs "node"}
+
     stages {
         // cleanup from folder on system remains from previous build like a cy beforeEach() to guarantee clean start
         stage('cleanup') {
