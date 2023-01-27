@@ -7,10 +7,6 @@ pipeline {
     // }
     agent any
 
-    tools {
-        NodeJS 'NodeJS 19.5.0'
-    }
-
     stages {
         // cleanup from folder on system remains from previous build like a cy beforeEach() to guarantee clean start
         stage('cleanup') {
@@ -26,16 +22,20 @@ pipeline {
                 // on local Jenkins machine (assuming port 8080) see
                 // http://localhost:8080/pipeline-syntax/globals#env
                 echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                sh 'npm config ls'
+                nodejs(nodeJSInstallationName: 'NodeJS') {
+                    sh 'npm config ls'
+                }
             }
         }
         stage('test') {
             steps {
                 // download NodeJS plugin for Jenkins to use the below steps
                 // https://medium.com/appgambit/ci-cd-pipeline-for-a-nodejs-application-with-jenkins-fa3cc7fad13a
-                sh 'npm i yarn'
-                sh 'yarn'
-                sh 'yarn run cypress:run'
+                nodejs(nodeJSInstallationName: 'NodeJS') {
+                    sh 'npm i yarn'
+                    sh 'yarn'
+                    sh 'yarn run cypress:run'
+                }
             }
         }
         stage('deploy') {
