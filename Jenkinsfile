@@ -7,7 +7,7 @@ pipeline {
     // }
     agent any
 
-    tools {NodeJS "node"}
+    tools {nodejs "19.5.0"}
 
     stages {
         // cleanup from folder on system remains from previous build like a cy beforeEach() to guarantee clean start
@@ -24,6 +24,7 @@ pipeline {
                 // on local Jenkins machine (assuming port 8080) see
                 // http://localhost:8080/pipeline-syntax/globals#env
                 echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
+                sh 'npm config ls'
             }
         }
         stage('test') {
