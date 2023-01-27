@@ -32,7 +32,7 @@ pipeline {
                 // download NodeJS plugin for Jenkins to use the below steps
                 // https://medium.com/appgambit/ci-cd-pipeline-for-a-nodejs-application-with-jenkins-fa3cc7fad13a
                 nodejs(nodeJSInstallationName: 'NodeJS') {
-                    sh 'npm i yarn'
+                    sh 'npm i'
                     sh 'npx run cypress:run'
                 }
             }
