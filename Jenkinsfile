@@ -6,6 +6,9 @@ pipeline {
     //     }
     // }
     agent any
+
+    tools {nodejs "node"}
+
     stages {
         // cleanup from folder on system remains from previous build like a cy beforeEach() to guarantee clean start
         stage('cleanup') {
@@ -26,7 +29,7 @@ pipeline {
         stage('test') {
             steps {
                 // download NodeJS plugin for Jenkins to use the below steps
-                curl https://www.npmjs.com/install.sh | sh
+                // https://medium.com/appgambit/ci-cd-pipeline-for-a-nodejs-application-with-jenkins-fa3cc7fad13a
                 sh 'npm i yarn'
                 sh 'yarn'
                 sh 'yarn run cypress:run'
