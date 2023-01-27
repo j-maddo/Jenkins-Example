@@ -7,7 +7,7 @@ pipeline {
     // }
     agent any
 
-    tools {NodeJS "19.5.0"}
+    tools {NodeJS '19.5.0'}
 
     stages {
         // cleanup from folder on system remains from previous build like a cy beforeEach() to guarantee clean start
