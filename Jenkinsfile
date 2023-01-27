@@ -21,7 +21,6 @@ pipeline {
                 // on local Jenkins machine (assuming port 8080) see
                 // http://localhost:8080/pipeline-syntax/globals#env
                 echo "Running build ${env.BUILD_ID} on ${env.JENKINS_URL}"
-                sh 'yarn ci'
                 sh 'yarn run cypress:run'
             }
         }
