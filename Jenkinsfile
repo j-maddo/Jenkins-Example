@@ -25,9 +25,16 @@ pipeline {
         }
         stage('test') {
             steps {
+                // download NodeJS plugin for Jenkins to use the below steps
+                curl https://www.npmjs.com/install.sh | sh
                 sh 'npm i yarn'
                 sh 'yarn'
                 sh 'yarn run cypress:run'
+            }
+        }
+        stage('deploy') {
+            steps {
+                echo 'Deploying'
             }
         }
     }
