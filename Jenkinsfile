@@ -33,8 +33,7 @@ pipeline {
                 // https://medium.com/appgambit/ci-cd-pipeline-for-a-nodejs-application-with-jenkins-fa3cc7fad13a
                 nodejs(nodeJSInstallationName: 'NodeJS') {
                     sh 'npm i yarn'
-                    sh 'yarn'
-                    sh 'yarn run cypress:run'
+                    sh 'npx run cypress:run'
                 }
             }
         }
